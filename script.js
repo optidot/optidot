@@ -288,3 +288,63 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+
+// For email
+function sendEmail() {
+      const email = "optidotdigital@gmail.com";
+      const subject = encodeURIComponent("Collaboration with OptiDot Digital");
+      const body = encodeURIComponent(
+        "Hello OptiDot Team,\n\n" +
+        `I want to begin by saying that I’m genuinely impressed by the quality and professionalism of your services. The way your team presents and delivers your offerings reflects a strong commitment to excellence, and that’s something I deeply value. After going through your work, I feel inspired and curious to learn more about your company, your vision, and the people behind it.
+
+        With that in mind, I would really appreciate the opportunity to have a conversation with you — either through a virtual meeting or any form of communication that works best for you. I believe there is a strong potential for us to collaborate, and I’m eager to explore how we might work together in a way that’s meaningful and mutually beneficial. Whether it’s for a specific project or a long-term partnership, I’d love to hear your thoughts and ideas as well.
+
+        Thank you once again for the work you do and for the impact you're making in your space. I look forward to connecting soon and starting a productive conversation.\n\n` +
+        "Regards,\n[Your Name]"
+      );
+
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+      window.open(gmailUrl, "_blank");
+    }
+// For phone call
+function isMobileDevice() {
+      return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+    }
+
+    function makeCall() {
+      const phoneNumber = "+9779767457243";
+      const messageBox = document.getElementById("message");
+
+      if (isMobileDevice()) {
+        // Works on mobile: open dialer with number
+        window.location.href = `tel:${phoneNumber}`;
+      } else {
+        // On desktop: show message
+        messageBox.textContent = " Phone call is not available in desktop, please open in your mobile.";
+      }
+    }
+// For WhatsApp
+function isMobileDevice() {
+      return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+    }
+
+    function openWhatsApp() {
+      const phoneNumber = "9779767457243"; // No '+' or '00' prefix here
+      const message = encodeURIComponent("Hey OptiDot team! I'm interested in your services.");
+      const messageBox = document.getElementById("message");
+
+      let url;
+
+      if (isMobileDevice()) {
+        // Mobile: Open WhatsApp app
+        url = `whatsapp://send?phone=${phoneNumber}&text=${message}`;
+      } else {
+        // Desktop: Open WhatsApp Web
+        url = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+        messageBox.textContent = "Redirecting you to WhatsApp Web...";
+      }
+
+      // Open WhatsApp
+      window.open(url, '_blank');
+    }
